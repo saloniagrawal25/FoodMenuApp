@@ -1,4 +1,5 @@
 {
   "name": "FoodMenuApp",
-  "displayName": "FoodMenuApp"
+  "displayName": "FoodMenuApp",
+  "orientation": "portrait"
 }
