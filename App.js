@@ -7,6 +7,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealsDetailsScreen from './screens/MealsDetailsScreen';
 import FavouritesScreen from './screens/FavoritesScreen';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -19,12 +20,19 @@ const App = () => {
           headerStyle: {backgroundColor: '#351401'},
           headerTintColor: 'white',
           sceneContainerStyle: {backgroundColor: '#3f2f25'},
+          drawerContentStyle: {backgroundColor: '#351401'},
+          drawerInactiveTintColor: 'white',
+          drawerActiveTintColor: '#351401',
+          drawerActiveBackgroundColor: '#e4baa1',
         }}>
         <Drawer.Screen
           component={CategoriesScreen}
           name="MealsCategories"
           options={{
-            title: 'Categories',
+            title: 'All Categories',
+            drawerIcon: ({size, color}) => {
+              return <Icon size={size} color={color} name="list" />;
+            },
           }}
         />
         <Drawer.Screen
@@ -32,6 +40,9 @@ const App = () => {
           name="Favourites"
           options={{
             title: 'Favourites',
+            drawerIcon: ({size, color}) => {
+              return <Icon size={size} color={color} name="star" />;
+            },
           }}
         />
       </Drawer.Navigator>
@@ -52,12 +63,17 @@ const App = () => {
             name="Drawer"
             component={DrawerNavigator}
             options={{
-              title: 'All Categories',
               headerShown: false,
             }}
           />
           <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
-          <Stack.Screen name="MealsDetails" component={MealsDetailsScreen} />
+          <Stack.Screen
+            name="MealsDetails"
+            component={MealsDetailsScreen}
+            options={{
+              title: 'About the Meal',
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
