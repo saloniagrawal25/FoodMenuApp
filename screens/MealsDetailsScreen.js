@@ -17,7 +17,13 @@ const MealsDetailsScreen = ({route, navigation}) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerRight: () => <IconButton onPress={headerButtonPressHandler} />,
+      headerRight: () => (
+        <IconButton
+          icon={'star'}
+          color={'white'}
+          onPress={headerButtonPressHandler}
+        />
+      ),
     });
   }, [navigation, headerButtonPressHandler]);
 
