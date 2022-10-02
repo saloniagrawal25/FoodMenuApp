@@ -6,21 +6,29 @@ import {
   Image,
   Platform,
 } from 'react-native';
+import MealDetail from './MealDetail';
 
-const MealItem = ({title, imageUrl, duration, affordability, complexity}) => {
+const MealItem = ({
+  title,
+  imageUrl,
+  duration,
+  affordability,
+  complexity,
+  onPress,
+}) => {
   return (
     <View style={styles.mealItem}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
         <View style={styles.innerContainer}>
           <View>
             <Image source={{uri: imageUrl}} style={styles.image} />
             <Text style={styles.title}>{title}</Text>
           </View>
-          <View style={styles.details}>
-            <Text style={styles.detailItem}>{duration}</Text>
-            <Text style={styles.detailItem}>{complexity.toUpperCase()}</Text>
-            <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
-          </View>
+          <MealDetail
+            duration={duration}
+            affordability={affordability}
+            complexity={complexity}
+          />
         </View>
       </TouchableOpacity>
     </View>
@@ -52,16 +60,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     margin: 8,
-  },
-  details: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 8,
-    justifyContent: 'center',
-  },
-  detailItem: {
-    marginHorizontal: 4,
-    fontSize: 12,
   },
 });
 

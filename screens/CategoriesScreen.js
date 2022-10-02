@@ -1,5 +1,5 @@
 import {CATEGORIES} from '../data/dummy-data';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 import CategoryGridTile from '../components/CategoriyGridTile';
 
 const CategoriesScreen = ({navigation}) => {
@@ -19,21 +19,15 @@ const CategoriesScreen = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={CATEGORIES}
-        keyExtractor={item => item.id}
-        renderItem={renderCategoriesItem}
-        numColumns={2}
-      />
-    </View>
+    <FlatList
+      data={CATEGORIES}
+      keyExtractor={item => item.id}
+      renderItem={renderCategoriesItem}
+      numColumns={2}
+    />
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'black',
-  },
-});
+const styles = StyleSheet.create({});
 
 export default CategoriesScreen;
