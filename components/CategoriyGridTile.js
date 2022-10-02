@@ -1,9 +1,9 @@
 import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
 
-const CategoryGridTile = ({title, color}) => {
+const CategoryGridTile = ({title, color, onPress}) => {
   return (
     <View style={[styles.gridItem, {backgroundColor: color}]}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
         <View style={styles.innerContainer}>
           <Text style={styles.title}>{title}</Text>
         </View>
