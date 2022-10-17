@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, StatusBar} from 'react-native';
+import {Provider} from 'react-redux';
 import CategoriesScreen from './screens/CategoriesScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
@@ -8,7 +9,8 @@ import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealsDetailsScreen from './screens/MealsDetailsScreen';
 import FavouritesScreen from './screens/FavouritesScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
-import FavouritesContextProvider from './store/context/favourites-context';
+//import FavouritesContextProvider from './store/context/favourites-context';
+import {store} from './store/redux/store';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -53,7 +55,8 @@ const App = () => {
   return (
     <>
       <StatusBar barStyle={'light-content'} />
-      <FavouritesContextProvider>
+      {/* <FavouritesContextProvider> */}
+      <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
@@ -81,7 +84,8 @@ const App = () => {
             />
           </Stack.Navigator>
         </NavigationContainer>
-      </FavouritesContextProvider>
+      </Provider>
+      {/* </FavouritesContextProvider> */}
     </>
   );
 };
