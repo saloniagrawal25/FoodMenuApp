@@ -1,7 +1,17 @@
-import {StyleSheet, Text} from 'react-native';
+import {useContext} from 'react';
+import {StyleSheet} from 'react-native';
+import MealsList from '../components/MealList/MealsList';
+import {MEALS} from '../data/dummy-data';
+import {FavouritesContext} from '../store/context/favourites-context';
 
 const FavouritesScreen = () => {
-  return <Text>Favourites</Text>;
+  const favouriteMealContext = useContext(FavouritesContext);
+  console.log(favouriteMealContext.ids);
+  const favouriteItems = MEALS.filter(meal =>
+    favouriteMealContext.ids.includes(meal.id),
+  );
+
+  return <MealsList items={favouriteItems} />;
 };
 
 const styles = StyleSheet.create({});

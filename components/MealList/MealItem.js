@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import {
   StyleSheet,
   View,
@@ -9,16 +10,22 @@ import {
 import MealDetail from '../MealDetail';
 
 const MealItem = ({
+  id,
   title,
   imageUrl,
   duration,
   affordability,
   complexity,
-  onPress,
 }) => {
+  const {navigate} = useNavigation();
+
+  const pressHandler = () => {
+    navigate('MealsDetails', {mealId: id});
+  };
+
   return (
     <View style={styles.mealItem}>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={pressHandler}>
         <View style={styles.innerContainer}>
           <View>
             <Image source={{uri: imageUrl}} style={styles.image} />
