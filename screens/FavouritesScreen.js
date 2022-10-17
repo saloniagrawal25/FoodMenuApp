@@ -6,7 +6,6 @@ import {FavouritesContext} from '../store/context/favourites-context';
 
 const FavouritesScreen = () => {
   const favouriteMealContext = useContext(FavouritesContext);
-  console.log(favouriteMealContext.ids);
   const favouriteItems = MEALS.filter(meal =>
     favouriteMealContext.ids.includes(meal.id),
   );
